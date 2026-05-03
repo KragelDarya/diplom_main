@@ -1,0 +1,124 @@
+/* Общий фон */
+body {
+    background: #faf5ff;
+}
+
+/* ————— ПОИСК ————— */
+
+.search-block-all {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.search-container-all {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px 18px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    width: 400px;
+}
+
+.search-container-all input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin-left: 12px;
+}
+
+/* ————— ОБЩИЙ КОНТЕЙНЕР ————— */
+
+.all-wrapper {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 25px;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ————— ФИЛЬТРЫ ————— */
+
+.filters {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    height: 540px;
+
+}
+
+.filters label {
+    margin-top: 15px;
+    display: block;
+    color: #4b1770;
+    font-size: 15px;
+}
+
+.filters select,
+.filters input[type="range"] {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.reset-btn {
+    margin-top: 20px;
+    /* width: 100%; */
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #6b26b6;
+    background: white;
+    color: #6b26b6;
+    cursor: pointer;
+}
+
+/* ————— БЛОК КАРТОЧЕК ————— */
+
+.found-count {
+    font-size: 18px;
+    color: #5a0ea6;
+    margin-bottom: 20px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 25px;
+}
+
+/* Используем те же карточки, что в popular-блоке */
+
+.scheme-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: .2s ease;
+}
+
+.scheme-card img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+}
+
+/* две кнопки одинаковой ширины */
+.scheme-card .buttons{
+  display: flex;
+  gap: 12px;              /* если нужно расстояние */
+}
+
+.scheme-card .buttons .btn,
+.scheme-card .buttons form{
+  flex: 1;                /* равные колонки */
+}
+
+.scheme-card .buttons form{
+  margin: 0;              /* чтобы форма не давала лишних отступов */
+}
+
+.scheme-card .buttons form .btn{
+  width: 100%;            /* чтобы кнопка заполняла form */
+}
