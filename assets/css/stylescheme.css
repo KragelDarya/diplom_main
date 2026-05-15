@@ -3,7 +3,8 @@ body {
 }
 
 /* ======= СТАТИСТИКА ======= */
-.stats {
+.stats,
+.scheme-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
@@ -12,7 +13,8 @@ body {
     margin: 30px auto;
 }
 
-.stat-card {
+.stat-card,
+.scheme-stat-card {
     background: white;
     border-radius: 16px;
     padding: 20px;
@@ -32,7 +34,8 @@ body {
 }
 
 /* ======= ОБЛАСТЬ РАБОТЫ ======= */
-.workspace {
+.workspace,
+.scheme-workspace {
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 25px;
@@ -42,70 +45,116 @@ body {
 }
 
 /* ======= ПАЛИТРА ======= */
-.palette {
+.palette,
+.scheme-palette {
     background: white;
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.palette h3 {
-    margin-bottom: 20px;
+.palette h3,
+.scheme-palette h3 {
+    margin: 0 0 20px 0;
     color: #3c1461;
 }
 
-.color-item {
+.color-item,
+.palette-item {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 15px;
 }
 
-.color-preview {
+.color-preview,
+.palette-color {
     width: 25px;
     height: 25px;
     border-radius: 6px;
+    flex-shrink: 0;
 }
 
-.color-info .color-name {
+.color-info .color-name,
+.palette-name {
     font-size: 15px;
     color: #3c1461;
+    font-weight: 600;
 }
 
-.color-info .color-count {
+.color-info .color-count,
+.palette-count {
     font-size: 13px;
     color: #7c6a9a;
+    margin-top: 2px;
 }
 
 /* ======= ОБЛАСТЬ СХЕМЫ ======= */
-.scheme-area {
+.scheme-area,
+.scheme-main {
     background: white;
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.scheme-header {
+.scheme-header,
+.scheme-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 
-.scheme-header h2 {
+.scheme-header h2,
+.scheme-top h2 {
     color: #3c1461;
     margin: 0 0 10px 0;
 }
 
-.scheme-tools button {
-    background: white;
-    border: 1px solid #ddd;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-left: 5px;
+.scheme-tools {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-/* ====== ПИКСЕЛЬНАЯ СЕТКА ====== */
+.scheme-tools button,
+.scheme-tools span {
+    background: white;
+    border: 1px solid #ddd;
+    min-width: 34px;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #3c1461;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scheme-tools span {
+    cursor: default;
+}
+
+/* ====== CANVAS-СХЕМА ====== */
+.canvas-wrap {
+    width: 100%;
+    height: 720px;
+    overflow: auto;
+    border: 2px solid #eee;
+    background: white;
+    margin-top: 20px;
+}
+
+#schemeCanvas {
+    display: block;
+    image-rendering: pixelated;
+    cursor: pointer;
+}
+
+/* ====== ПИКСЕЛЬНАЯ СЕТКА, если используешь div-пиксели ====== */
 .scheme-grid {
     display: grid;
     grid-template-columns: repeat(50, 16px);
@@ -113,8 +162,8 @@ body {
     gap: 0;
     margin: 20px auto;
     border: 2px solid #eee;
+    overflow: auto;
 }
-
 
 .pixel {
     width: 16px;
@@ -123,7 +172,6 @@ body {
     position: relative;
 }
 
-/* отмеченный пиксель — кружочек */
 .pixel.marked::after {
     content: "○";
     position: absolute;
@@ -136,20 +184,37 @@ body {
     align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .scheme-hint {
     margin-top: 15px;
     font-size: 14px;
     color: #7c6a9a;
+}
+
+@media (max-width: 900px) {
+    .stats,
+    .scheme-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workspace,
+    .scheme-workspace {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .stats,
+    .scheme-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .scheme-header,
+    .scheme-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .canvas-wrap {
+        height: 520px;
+    }
 }
